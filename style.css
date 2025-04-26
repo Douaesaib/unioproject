@@ -1,97 +1,175 @@
-/* Styles généraux */
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+/* Définition des couleurs principales et des variables globales */
+:root {
+    --primary-color: #2563eb; /* Bleu principal */
+    --secondary-color: #1e40af; /* Bleu foncé */
+    --accent-color: #3b82f6; /* Accent clair */
+    --text-light: #f8fafc; /* Texte clair */
+    --text-dark: #0f172a; /* Texte foncé */
+    --section-bg: #ffffff; /* Fond blanc pour les sections */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Ombre des cartes */
   }
   
-  main {
-    flex: 1;
+  /* Style global du corps de la page */
+  body {
+    font-family: 'Inter', sans-serif; /* Police moderne */
+    background: var(--section-bg); /* Fond blanc global */
+    color: var(--text-dark); /* Couleur de texte foncée */
+    line-height: 1.6; /* Espacement de ligne pour une meilleure lisibilité */
   }
   
-  footer {
-    margin-top: auto;
+  /* Style de la barre de navigation */
+  .navbar {
+    background-color: var(--primary-color); /* Couleur de fond de la navbar */
+    padding: 1.25rem 0; /* Espacement interne */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile sous la navbar */
   }
   
-  /* Styles de la page d'accueil */
-  .jumbotron {
-    border-radius: 0.5rem;
+  /* Section Hero (accueil) avec gradient */
+  .hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Gradient en arrière-plan */
+    padding: 8rem 0; /* Espace pour le texte et les boutons */
+    text-align: center; /* Centrer le contenu */
+    color: var(--text-light); /* Texte clair */
+    position: relative; /* Position pour l'overlay */
+    overflow: hidden; /* Empêche le débordement */
   }
   
-  /* Styles pour le formulaire d'inscription */
-  .form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  /* Superposition sombre avec un motif SVG subtil */
+  .hero-section::before {
+    content: ''; /* Création d'un pseudo-élément pour l'overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
   
-  /* Styles pour le dashboard enseignant */
-  .teacher-card {
-    transition: transform 0.2s;
+  /* Style des cartes de fonctionnalités */
+  .feature-card {
+    background: white; /* Fond blanc pour les cartes */
+    border-radius: 12px; /* Coins arrondis */
+    padding: 2.5rem; /* Espacement interne */
+    box-shadow: var(--card-shadow); /* Ombre pour donner de la profondeur */
+    transition: all 0.3s ease; /* Transition douce lors du survol */
+    height: 100%; /* S'assure que la carte prend toute la hauteur disponible */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Bordure subtile */
   }
   
-  .teacher-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* Effet de survol des cartes (élévation) */
+  .feature-card:hover {
+    transform: translateY(-5px); /* Légère élévation */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Ombre plus marquée au survol */
   }
   
-  /* Styles pour le timer d'examen */
-  .timer {
-    font-family: monospace;
-    font-weight: bold;
-    border-radius: 0.25rem;
+  /* Style des icônes dans les cartes de fonctionnalités */
+  .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px; /* Taille de l'icône */
+    height: 64px;
+    border-radius: 16px; /* Coins arrondis de l'icône */
+    background: var(--accent-color); /* Fond de l'icône */
+    color: white; /* Couleur du texte de l'icône */
+    margin-bottom: 1.5rem; /* Espacement sous l'icône */
+    transition: all 0.3s ease; /* Transition lors du survol */
   }
   
-  .timer.warning {
-    background-color: #dc3545 !important;
-    color: white !important;
-    animation: pulse 1s infinite;
+  /* Effet de survol sur l'icône */
+  .feature-card:hover .feature-icon {
+    transform: scale(1.1); /* Agrandir légèrement l'icône au survol */
   }
   
-  @keyframes pulse {
-    0% {
-      opacity: 1;
+  /* Section d'appel à l'action */
+  .cta-section {
+    background-color: var(--section-bg); /* Fond blanc pour la section */
+    padding: 6rem 0; /* Espacement interne */
+    text-align: center; /* Centrer le contenu */
+    position: relative;
+  }
+  
+  /* Ligne horizontale subtile sous la section d'appel à l'action */
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+  }
+  
+  /* Pied de page */
+  .footer {
+    background-color: var(--primary-color); /* Fond bleu du pied de page */
+    color: var(--text-light); /* Texte clair */
+    padding: 4rem 0; /* Espacement interne */
+  }
+  
+  /* Style des boutons */
+  .btn {
+    border-radius: 8px; /* Coins arrondis des boutons */
+    padding: 0.75rem 2rem; /* Espacement interne des boutons */
+    font-weight: 500; /* Poids de police modéré */
+    transition: all 0.3s ease; /* Transition douce lors du survol */
+  }
+  
+  /* Bouton principal (avec couleur bleue) */
+  .btn-primary {
+    background-color: var(--primary-color); /* Fond bleu */
+    border-color: var(--primary-color); /* Bordure bleu */
+  }
+  
+  /* Effet de survol sur le bouton principal */
+  .btn-primary:hover {
+    background-color: var(--secondary-color); /* Changement de couleur au survol */
+    border-color: var(--secondary-color); /* Changement de bordure */
+    transform: translateY(-2px); /* Légère élévation du bouton */
+  }
+  
+  /* Bouton clair avec bordure */
+  .btn-outline-light {
+    border: 2px solid var(--text-light); /* Bordure claire */
+  }
+  
+  /* Effet de survol sur le bouton clair */
+  .btn-outline-light:hover {
+    background-color: var(--text-light); /* Fond clair au survol */
+    color: var(--primary-color) !important; /* Texte bleu au survol */
+  }
+  
+  /* Style de la marque de la navbar */
+  .navbar-brand {
+    font-weight: 700; /* Poids de police élevé */
+    font-size: 1.5rem; /* Taille de police plus grande */
+    letter-spacing: -0.5px; /* Espacement négatif des lettres */
+  }
+  
+  /* Style des liens de la navbar */
+  .nav-link {
+    font-weight: 500; /* Poids de police modéré */
+    padding: 0.5rem 1rem; /* Espacement interne */
+    transition: opacity 0.3s ease; /* Transition d'opacité */
+  }
+  
+  /* Effet de survol des liens de la navbar */
+  .nav-link:hover {
+    opacity: 0.8; /* Diminution de l'opacité au survol */
+  }
+  
+  /* Responsivité pour les petits écrans */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 4rem 0; /* Moins d'espace sur les petits écrans */
     }
-    50% {
-      opacity: 0.7;
+    
+    .feature-card {
+      margin-bottom: 2rem; /* Espacement supplémentaire entre les cartes */
     }
-    100% {
-      opacity: 1;
+    
+    .navbar {
+      padding: 1rem 0; /* Espacement interne réduit */
     }
   }
   
-  /* Style pour les options QCM */
-  .option-label {
-    display: block;
-    padding: 0.75rem 1rem;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .option-label:hover {
-    background-color: #f8f9fa;
-  }
-  
-  .option-input:checked + .option-label {
-    background-color: #cfe2ff;
-    border-color: #0d6efd;
-  }
-  
-  /* Styles pour les médias des questions */
-  .question-media-container {
-    max-width: 100%;
-    margin-bottom: 1.5rem;
-  }
-  
-  .question-media-container img,
-  .question-media-container video {
-    max-width: 100%;
-    max-height: 400px;
-    border-radius: 0.25rem;
-  }
-  
-  .question-media-container audio {
-    width: 100%;
-  }

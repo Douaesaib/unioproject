@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen en cours - D&A Quiz</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- CSS  -->
+  <link rel="stylesheet" href="style.css">
+  <!-- icon -->
+  <link rel="icon" type="image/png" href="DA_quiz.png">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">D&A Quiz</a>
+      <div class="ms-auto">
+        <span class="text-white" id="user-info">Étudiant</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="container mt-4">
+    <div class="card mb-4" id="geolocation-request">
+      <div class="card-header bg-warning">
+        <h2 class="h5 mb-0">Activation de la géolocalisation requise</h2>
+      </div>
+      <div class="card-body">
+        <p>Pour accéder à cet examen, vous devez activer la géolocalisation.</p>
+        <button id="enable-geolocation" class="btn btn-primary">Activer la géolocalisation</button>
+      </div>
+    </div>
+
+    <div class="d-none" id="exam-content">
+      <div class="card mb-4">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+          <h1 class="h3 mb-0" id="exam-title">Titre de l'examen</h1>
+          <div class="d-flex align-items-center">
+            <div class="badge bg-primary me-2">
+              Question <span id="current-question-num">1</span>/<span id="total-questions">10</span>
+            </div>
+            <div class="timer bg-warning text-dark px-3 py-2 rounded">
+              Temps restant: <span id="timer">00:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="question-container">
+            <h2 class="h4 mb-3" id="question-text">Texte de la question</h2>
+            
+            <div id="question-media" class="mb-3">
+              <!-- Le média de la question sera inséré ici dynamiquement -->
+            </div>
+            
+            <!-- Pour les questions directes -->
+            <div id="direct-question-input" class="mb-3">
+              <label for="direct-answer" class="form-label">Votre réponse :</label>
+              <textarea class="form-control" id="direct-answer" rows="3"></textarea>
+            </div>
+            
+            <!-- Pour les QCM -->
+            <div id="qcm-question-options" class="mb-3 d-none">
+              <!-- Les options QCM seront insérées ici dynamiquement -->
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" id="submit-answer" class="btn btn-primary">Valider la réponse</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card mb-4 d-none" id="exam-results">
+      <div class="card-header bg-success text-white">
+        <h2 class="h5 mb-0">Examen terminé</h2>
+      </div>
+      <div class="card-body">
+        <h3 class="text-center mb-4">Votre score : <span id="final-score">0</span>/100</h3>
+        
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white mt-5 py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>D&A Quiz</h5>
+          <p>Plateforme d'examen en ligne</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p>&copy; 2025 D&A Quiz. Tous droits réservés.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS avec Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Scripts personnalisés -->
+  <script src="auth.js"></script>
+  <script src="exam.js"></script>
+</body>
+</html>
